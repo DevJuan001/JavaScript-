@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+</head>
+<body>
+    <script>
+        //  Actividad:
+//  1. Cree un código que solicite un usuario y una contraseña y lo valide asi:
+//  - Cree el usuario y la contraseña
+//  - Valide el usuario con 3 intentos si este esta mal le dice muchas gracias por intentar
+//  - Si esta bien pasa a validar la contraseña
+//  - Si la contraseña esta mal en 3 intentos le dice gracias por intentar
+//  - Si la contraseña esta bien le dice impreso en la hoja Hola Adso 2025
+
+alert("A continuación este programa te pedira que crees un usuario y una contraseña");
+
+let user = prompt("Cree un usuario");
+let pass = prompt("Cree una contraseña");
+verificarUser();
+
+function verificarUser(){
+    let intentos1= 0
+                while( intentos1 < 3){
+            let verificarUsuario = prompt("Introduzca su usuario");
+            if (verificarUsuario===user){
+                verificarPass();
+                return;
+            }else {
+            intentos1 ++;
+            if(intentos1 < 3){
+                alert("Intente nuevamente");
+            }else{
+                alert("Muchas gracias por intentar");
+            }
+        }
+    }
+}
+    function verificarPass(){
+        let intentos2 = 0;
+           while(intentos2 < 3){
+            let verificarContra = prompt("Introduzca su contraseña");
+            if(verificarContra===pass){
+               document.write("<h2> Hola </h2>")
+               return;
+            }else{
+                intentos2++;
+                if(intentos2 < 3){
+                    alert("Intente nuevamente");
+                }else {
+                    alert("Muchas gracias por intentar ");
+                }
+            }
+              
+        }
+    }
+</script>
+</body>
+</html>

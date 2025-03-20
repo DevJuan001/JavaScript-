@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina el numero</title>
+</head>
+<body>
+
+    <script>
+        const numeroSecreto = Math.floor(Math.random()*100)+1;
+        let intentos = 3;
+
+        function adivinarNumero (){
+            if (intentos > 0 ){
+                const numero = parseInt(document.getElementById("numero").value);
+                let mensaje = "";
+
+                if(numero < numeroSecreto){
+                    mensaje = "El numero es mayor";
+                }else if(numero > numeroSecreto){
+                    mensaje = "El numero es menor";
+                }else {
+                    mensaje = "Felicidades Adivinaste el numero";
+                    alert(mensaje )
+                    return;
+                }
+                intentos --;
+                mensaje +=` te quedan ${intentos} intentos`;
+                alert(mensaje);
+                
+                if (intentos == 0){
+                alert("Has perdido, el numero era " +numeroSecreto );
+                }
+            }
+        }
+    </script>
+            <h1>Adivina el numero</h1>
+            <input type="number" id="numero" placeholder="Ingresa un numero">
+            <button onclick="adivinarNumero()">Adivinar</button>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>Registro e Inicio de Sesión con Opciones</title>
+</head>
+<body>
+    <h1>Registro e Inicio de Sesión</h1>
+
+    <div id="crearUsuario">
+        <h2>Crear Usuario</h2>
+        <label for="nuevoUsuario">Nombre de usuario:</label>
+        <input type="text" id="nuevoUsuario" placeholder="Ingrese su nombre de usuario">
+        <br>
+        <label for="nuevaContrasena">Contraseña:</label>
+        <input type="password" id="nuevaContrasena" placeholder="Ingrese su contraseña">
+        <br>
+        <button onclick="crearUsuario()">Crear Usuario</button>
+    </div>
+
+    <div id="iniciarSesion" style="display: none;">
+        <h2>Iniciar Sesión</h2>
+        <label for="usuarioIngresado">Nombre de usuario:</label>
+        <input type="text" id="usuarioIngresado" placeholder="Ingrese su nombre de usuario">
+        <br>
+        <label for="contrasenaIngresada">Contraseña:</label>
+        <input type="password" id="contrasenaIngresada" placeholder="Ingrese su contraseña">
+        <br>
+        <button onclick="iniciarSesion()">Iniciar Sesión</button>
+        <p id="mensaje"></p>
+    </div>
+
+    <div id="opciones" style="display: none;">
+        <h2>Opciones</h2>
+        <button onclick="mostrarCalculadora()">Calculadora</button>
+        <button onclick="mostrarJuego()">Juego</button>
+        <button onclick="mostrarAreas()">Cálculo de Áreas</button>
+    </div>
+
+    <div id="calculadora" style="display: none;">
+        <h2>Calculadora</h2>
+        <input type="number" id="num1" placeholder="Número 1">
+        <input type="number" id="num2" placeholder="Número 2">
+        <br>
+        <label for="operacion">Seleccione la operación:</label>
+        <select id="operacion">
+            <option value="+">Sumar (+)</option>
+            <option value="-">Restar (-)</option>
+            <option value="/">Dividir (/)</option>
+            <option value="tabla">Tabla de multiplicar</option>
+        </select>
+        <br>
+        <button onclick="calcular()">Calcular</button>
+        <p id="resultadoCalculadora"></p>
+        <div id="tablaMultiplicar"></div> <!-- Contenedor para la tabla de multiplicar -->
+        <button onclick="volverAOpciones()">Volver a Opciones</button>
+    </div>
+
+    <div id="juego" style="display: none;">
+        <h2>Juego: Adivina el número</h2>
+        <p>Adivina un número entre 1 y 100. Tienes 10 intentos.</p>
+        <input type="number" id="numeroAdivinado" placeholder="Ingresa un número">
+        <button onclick="adivinarNumero()">Adivinar</button>
+        <p id="resultadoJuego"></p>
+        <p id="intentosRestantes"></p>
+        <button onclick="volverAOpciones()">Volver a Opciones</button>
+    </div>
+
+    <div id="areas" style="display: none;">
+        <h2>Cálculo de Áreas</h2>
+        <label for="figura">Selecciona una figura:</label>
+        <select id="figura">
+            <option value="cuadrado">Cuadrado</option>
+            <option value="rectangulo">Rectángulo</option>
+        </select>
+        <br>
+        <div id="inputsArea"></div>
+        <button onclick="calcularArea()">Calcular Área</button>
+        <p id="resultadoArea"></p>
+        <button onclick="volverAOpciones()">Volver a Opciones</button>
+    </div>
+
+    <script>
+        let usuarioCorrecto = "";
+        let contrasenaCorrecta = "";
+        let intentos = 0;
+
+        function crearUsuario() {
+            usuarioCorrecto = document.getElementById("nuevoUsuario").value;
+            contrasenaCorrecta = document.getElementById("nuevaContrasena").value;
+
+            if (usuarioCorrecto && contrasenaCorrecta) {
+                alert("Usuario y contraseña creados con éxito.");
+                document.getElementById("crearUsuario").style.display = "none";
+                document.getElementById("iniciarSesion").style.display = "block";
+                intentos = 0;
+                document.getElementById("mensaje").textContent = "";
+            } else {
+                alert("No se pudo crear el usuario. Por favor, complete ambos campos.");
+            }
+        }
+
+        function iniciarSesion() {
+            let usuarioIngresado = document.getElementById("usuarioIngresado").value;
+            let contrasenaIngresada = document.getElementById("contrasenaIngresada").value;
+
+            if (usuarioIngresado === usuarioCorrecto && contrasenaIngresada === contrasenaCorrecta) {
+                document.getElementById("mensaje").textContent = "Inicio de sesión exitoso.";
+                alert("Inicio de sesión exitoso.");
+                document.getElementById("iniciarSesion").style.display = "none";
+                document.getElementById("opciones").style.display = "block";
+                intentos = 0;
+            } else {
+                intentos++;
+                if (intentos < 3) {
+                    document.getElementById("mensaje").textContent = `Usuario o contraseña incorrectos. Intentos restantes: ${3 - intentos}`;
+                    alert(`Usuario o contraseña incorrectos. Intentos restantes: ${3 - intentos}`);
+                } else {
+                    document.getElementById("mensaje").textContent = "Demasiados intentos. Debe crear un nuevo usuario.";
+                    alert("Demasiados intentos. Debe crear un nuevo usuario.");
+                    document.getElementById("iniciarSesion").style.display = "none";
+                    document.getElementById("crearUsuario").style.display = "block";
+                    intentos = 0;
+                }
+            }
+
+            document.getElementById("usuarioIngresado").value = "";
+            document.getElementById("contrasenaIngresada").value = "";
+        }
+
+        function mostrarCalculadora() {
+            document.getElementById("opciones").style.display = "none";
+            document.getElementById("calculadora").style.display = "block";
+        }
+
+        function mostrarJuego() {
+            document.getElementById("opciones").style.display = "none";
+            document.getElementById("juego").style.display = "block";
+            iniciarJuego();
+        }
+
+        function mostrarAreas() {
+            document.getElementById("opciones").style.display = "none";
+            document.getElementById("areas").style.display = "block";
+            actualizarInputsArea();
+        }
+
+        function calcular() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let operacion = document.getElementById("operacion").value;
+            let resultado = "";
+            let tablaMultiplicar = document.getElementById("tablaMultiplicar");
+
+            document.getElementById("resultadoCalculadora").textContent = "";
+            tablaMultiplicar.innerHTML = "";
+
+            if (operacion === "+") {
+                resultado = `Resultado: ${num1 + num2}`;
+                document.getElementById("resultadoCalculadora").textContent = resultado;
+            } else if (operacion === "-") {
+                resultado = `Resultado: ${num1 - num2}`;
+                document.getElementById("resultadoCalculadora").textContent = resultado;
+            } else if (operacion === "/") {
+                if (num2 !== 0) {
+                    resultado = `Resultado: ${num1 / num2}`;
+                    document.getElementById("resultadoCalculadora").textContent = resultado;
+                } else {
+                    document.getElementById("resultadoCalculadora").textContent = "Error: División por cero.";
+                }
+            } else if (operacion === "tabla") {
+                for (let i = 1; i <= 10; i++) {
+                    let linea = document.createElement("p");
+                    linea.textContent = `${num1} x ${i} = ${num1 * i}`;
+                    tablaMultiplicar.appendChild(linea);
+                }
+            }
+        }
+
+        let numeroAleatorio;
+        let intentosJuego = 10;
+
+        function iniciarJuego() {
+            numeroAleatorio = Math.floor(Math.random() * 100) + 1; 
+            intentosJuego = 10; 
+            document.getElementById("resultadoJuego").textContent = "";
+            document.getElementById("intentosRestantes").textContent = `Intentos restantes: ${intentosJuego}`;
+        }
+
+        function adivinarNumero() {
+            let numeroAdivinado = parseInt(document.getElementById("numeroAdivinado").value);
+            intentosJuego--;
+
+            if (numeroAdivinado === numeroAleatorio) {
+                document.getElementById("resultadoJuego").textContent = "¡Correcto! Has adivinado el número.";
+                document.getElementById("intentosRestantes").textContent = "";
+            } else if (intentosJuego > 0) {
+                if (numeroAdivinado < numeroAleatorio) {
+                    document.getElementById("resultadoJuego").textContent = "Incorrecto. El número es mayor.";
+                } else {
+                    document.getElementById("resultadoJuego").textContent = "Incorrecto. El número es menor.";
+                }
+                document.getElementById("intentosRestantes").textContent = `Intentos restantes: ${intentosJuego}`;
+            } else {
+                document.getElementById("resultadoJuego").textContent = `¡Agotaste tus intentos! El número era ${numeroAleatorio}.`;
+                document.getElementById("intentosRestantes").textContent = "";
+            }
+
+            document.getElementById("numeroAdivinado").value = "";
+        }
+
+        function actualizarInputsArea() {
+            let figura = document.getElementById("figura").value;
+            let inputsArea = document.getElementById("inputsArea");
+            inputsArea.innerHTML = "";
+
+            if (figura === "cuadrado") {
+                inputsArea.innerHTML = '<label for="lado">Lado:</label><input type="number" id="lado" placeholder="Ingresa el lado">';
+            } else if (figura === "rectangulo") {
+                inputsArea.innerHTML = '<label for="base">Base:</label><input type="number" id="base" placeholder="Ingresa la base"><br><label for="altura">Altura:</label><input type="number" id="altura" placeholder="Ingresa la altura">';
+            }
+        }
+
+        function calcularArea() {
+            let figura = document.getElementById("figura").value;
+            let area = 0;
+
+            if (figura === "cuadrado") {
+                let lado = parseFloat(document.getElementById("lado").value);
+                area = lado * lado;
+            } else if (figura === "rectangulo") {
+                let base = parseFloat(document.getElementById("base").value);
+                let altura = parseFloat(document.getElementById("altura").value);
+                area = base * altura;
+            }
+
+            document.getElementById("resultadoArea").textContent = `El área es: ${area}`;
+        }
+
+        function volverAOpciones() {
+            document.getElementById("calculadora").style.display = "none";
+            document.getElementById("juego").style.display = "none";
+            document.getElementById("areas").style.display = "none";
+            document.getElementById("opciones").style.display = "block";
+        }
+    </script>
+</body>
+</html>

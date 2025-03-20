@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluacion</title>
+</head>
+<body>
+    <div id="crearUsuario">
+        <h2>Crear Usuario</h2>
+        <input type="text" id="nuevoUsuario" placeholder="Cree un usuario">
+        <br>
+        <input type="password" id="nuevaContrasena" placeholder="Cree una contraseña">
+        <br>
+        <button onclick="crearUsuario()">Crear Usuario</button>
+    </div>
+        <div id="iniciarSesion" style="display: none;">
+            <h2>Iniciar Sesión</h2>
+            <input type="text" id="usuarioIngresado" placeholder="Ingrese su usuario">
+            <br>
+            <input type="password" id="contrasenaIngresada" placeholder="Ingrese su contraseña">
+            <br>
+            <button onclick="VerificarLogin()">Iniciar Sesión</button>
+            <p id="mensaje"></p>
+        </div>
+    <div id="juego" style="display: none;">
+        <h2>Adivina el número</h2>
+        <p>Adivina un número entre 1 y 100</p>
+        <input type="number" id="numeroAdivinado" placeholder="Ingresa un número">
+        <button onclick="adivinarNumero()">Adivinar</button>
+        <p id="resultadoJuego"></p>
+        <p id="intentosRestantes"></p>
+    </div>
+        <script>
+/* Cree un programa con la ssiguientes caracteristicas 
+    1. Crear el usuario y contraseña y las valide con 3 intentos
+    2. Despues q valide la contraseña y ingrese al sistema me pregunte que quiero hacer
+    me de las siguientes opciones: Calculadora, Juego, Áreas
+    3. Si escoge calculadora, me pida dos numeros y me pregunta q operacion quiero hacer
+    si +, -, *, / o tabla según la opcion que escoga realizar la operacion, si escoge tabla me pregunta la tabla que quiero
+    que aparezca
+    4. Si escoge juego adivinar el numero en 10 intentos
+    5. Si escoge Áreas me pergunta si quiero el area del cuadrado o rectangulo, Si escoge el cuadrado pide valo del lado 
+    y muestra el resultado, Si escoge rectangulo pide el valor de la base y la altura y muestra el resultado.  */
+    
+    let registroUser = "";
+    let registroPass = "";
+    let Intentos1 = 3;
+    let intentos2 = 3;
+    function crearUsuario() {
+            usuarioCorrecto = document.getElementById("nuevoUsuario").value;
+            contrasenaCorrecta = document.getElementById("nuevaContrasena").value;
+
+            if (usuarioCorrecto && contrasenaCorrecta) {
+                alert("Usuario y contraseña creados con éxito.");
+                document.getElementById("crearUsuario").style.display = "none";
+                document.getElementById("iniciarSesion").style.display = "block";
+                intentos = 0;
+                document.getElementById("mensaje").textContent = "";
+            } else {
+                alert("No se pudo crear el usuario. Por favor, complete ambos campos.");
+            }
+        }
+
+        function VerificarLogin() {
+            let usuarioIngresado = document.getElementById("usuarioIngresado").value;
+            let contrasenaIngresada = document.getElementById("contrasenaIngresada").value;
+
+            if (usuarioIngresado === usuarioCorrecto && contrasenaIngresada === contrasenaCorrecta) {
+                document.getElementById("mensaje").textContent = "Inicio de sesión exitoso.";
+                alert("Inicio de sesión exitoso.");
+                document.getElementById("iniciarSesion").style.display = "none";
+                opciones();
+                Intentos1 = 0;
+            }  if (usuarioIngresado !== usuarioCorrecto) {
+                    Intentos1--;
+                    if (Intentos1 > 0) {
+                        alert("Usuario Incorrecto, intente nuevamente");
+                } else {
+                    alert("Muchas gracias por intentar");
+                    document.getElementById("iniciarSesion").style.display = "none";
+                    Intentos1 = 0;
+                }
+            }else if (contrasenaIngresada !== registroPass) {
+                    intentos2--;
+                    if (intentos2 > 0) {
+                        alert("Contraseña incorrecta, intente nuevamente");
+                    } else {
+                        alert("Muchas gracias por intentar");
+                        document.getElementById("iniciarSesion").style.display = "none";
+                        intentos1 = 0;
+                        intentos2 = 0;
+                    }
+                }
+        }
+
+
+        function opciones(){
+            let Opcion=prompt("Eliga una opcion: ( - calculadora, - juego, -areas)");
+            if (Opcion == "calculadora"){
+                Calculadora();
+            }else if(Opcion =="juego"){
+                iniciarJuego();
+                adivinarNumero();
+            }else if (Opcion=="areas"){
+                areas();
+            }else{
+                alert("Operacion no valida");
+            }
+        }        
+
+            function Calculadora(){
+
+            Operacion=prompt("Introduzca la Operacion a realizar : -suma, -resta, -muliplicacion, -division -tabla");
+            var Operacion;
+
+            if (Operacion=="suma"){
+                var num1;
+                var num2;
+                num1=prompt("Introduce el primer numero");
+                num2=prompt("Introduce el segundo numero"); 
+                var suma= parseInt(num1)+parseInt(num2);
+                alert("El resultado de la suma de "+num1+" y "+num2+" es "+suma);
+                
+            }
+            else if (Operacion=="resta"){
+                var num1;
+                var num2;
+                num1=prompt("Introduce el primer numero");
+                num2=prompt("Introduce el segundo numero"); 
+                var resta=num1-num2;
+                alert("El resultado de la resta de "+num1+" y "+num2+" es "+resta);
+
+            }
+            else if (Operacion=="multiplicacion"){
+                
+                var num1;
+                var num2;
+                num1=prompt("Introduce el primer numero");
+                num2=prompt("Introduce el segundo numero"); 
+                var multiplicacion=num1*num2;
+                alert("El resultado de la multiplicacion de "+num1+" y "+num2+" es "+multiplicacion);
+
+            }
+            else if (Operacion=="division"){
+                var division=num1/num2;
+                alert("El resultado de la division de "+num1+" y "+num2+" es "+division);
+
+            }else if (Operacion=="tabla"){
+                
+                generartabla();
+
+                    function generartabla(){
+                    const numero = prompt("Digite el numero")
+                    document.write(`<h1> Las Tablas del ${numero} son: </h1>` )
+                    for (let i=1; i<=10; i++){
+                        document.write(`<p>${numero} x ${i} = ${numero * i}</p>`);
+                    }
+                    }   
+            }else{
+                alert("Operacion no valida");
+            }
+
+        }
+
+        let numeroAleatorio;
+        let intentos3 = 10;
+
+        function iniciarJuego() {
+            document.getElementById("juego").style.display = "block";
+            numeroAleatorio = Math.floor(Math.random() * 100) + 1; 
+            intentosJuego = 10; 
+            document.getElementById("resultadoJuego").textContent = "";
+            document.getElementById("intentosRestantes").textContent = `Intentos restantes: ${intentos3}`;
+        }
+
+        function adivinarNumero() {
+            let numeroAdivinado = parseInt(document.getElementById("numeroAdivinado").value);
+            intentos3--;
+
+            if (numeroAdivinado === numeroAleatorio) {
+                document.getElementById("resultadoJuego").textContent = "Adivinaste el número";
+                document.getElementById("intentosRestantes").textContent = "";
+            } else if (intentos3 > 0) {
+                if (numeroAdivinado < numeroAleatorio) {
+                    document.getElementById("resultadoJuego").textContent = "Incorrecto. El número es mayor.";
+                } else {
+                    document.getElementById("resultadoJuego").textContent = "Incorrecto. El número es menor.";
+                }
+                document.getElementById("intentosRestantes").textContent = `Te quedan ${intentos3}` ;
+            } else {
+                document.getElementById("resultadoJuego").textContent = `El número era ${numeroAleatorio}.`;
+                document.getElementById("intentosRestantes").textContent = "";
+            }
+
+            document.getElementById("numeroAdivinado").value = "";
+        }
+        
+            function areas(){
+                    let figura=prompt("Eliga la figura (- rectangulo o - cuadrado)");
+                    if(figura=="rectangulo"){
+                        let base = prompt("Digite la base");
+                        let altura = prompt("Digite la altura");
+                        let areaRectangulo = base*altura;
+                        alert("El area de su rectangulo es :"+areaRectangulo);
+                    }else if (figura=="cuadrado"){
+                        let lado = prompt("Digite el valor de un lado")
+                        let areaCuadrado = lado*lado;
+                        alert("El area de su cuadrado es: "+areaCuadrado);
+                    }else{
+                        alert("Operacion no valida");
+                        }
+}
+        </script>
+    </body>
+</html>

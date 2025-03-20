@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Adso </title>
+</head>
+<script>
+    var nombre;
+    nombre=prompt("Introduce tu nombre");
+    alert("Hola "+ nombre);
+
+    var op;
+    op=prompt("Introduzca la Operacion a realizar : 1-Suma, 2-resta, 3-muliplicacion, 4-division");
+
+    if (op=="suma")
+    {
+        alert("A continuacion se realizara una Suma");
+        var num1;
+        var num2;
+        num1=prompt("Introduce el primer numero");
+        num2=prompt("Introduce el segundo numero"); 
+        var suma= parseInt(num1)+parseInt(num2);
+        alert("El resultado de la suma de "+num1+" y "+num2+" es "+suma);
+    }
+    else if (op=="resta")
+    {
+        alert("A continuacion se realizara una resta");
+        var num1;
+        var num2;
+        num1=prompt("Introduce el primer numero");
+        num2=prompt("Introduce el segundo numero"); 
+        var resta=num1-num2;
+        alert("El resultado de la resta de "+num1+" y "+num2+" es "+resta);
+    }
+    else if (op=="multiplicacion")
+    {
+        alert("A continuacion se realizara una multiplicacion");
+        var num1;
+        var num2;
+        num1=prompt("Introduce el primer numero");
+        num2=prompt("Introduce el segundo numero"); 
+        var multiplicacion=num1*num2;
+        alert("El resultado de la multiplicacion de "+num1+" y "+num2+" es "+multiplicacion);
+    }
+    else if (op=="division")
+    {
+        alert("A continuacion se realizara una division");
+        var num1;
+        var num2;
+        num1=prompt("Introduce el primer numero");
+        num2=prompt("Introduce el segundo numero"); 
+        var division=num1/num2;
+        alert("El resultado de la division de "+num1+" y "+num2+" es "+division);
+    }
+    else
+    {
+        alert("Operacion no valida");
+    }
+
+</script>
+<body>
+    
+</body>
+</html>
