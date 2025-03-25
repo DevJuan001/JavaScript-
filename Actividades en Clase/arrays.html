@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+<body>
+    <h1>Lista de animales</h1>
+    <ul id="listaAnimales"></ul>
+        
+        <script>
+            // Crear una lista de animales
+            let animales = ["Gato", "Perro", "Tigre", "Leon"];
+
+            //Obtener el elemento ul donde se insertan los animales
+            let listaAnimales = document.getElementById("listaAnimales");
+
+
+            // Recorrer el array y crear el elemento li para cada animal
+            animales.forEach(function(animal){
+            let li = document.createElement("li");
+            li.textContent = animal;
+            listaAnimales.appendChild(li);
+        })
+        </script>
+</body>
+</html>

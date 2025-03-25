@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario para insertar datos en una array</title>
+</head>
+<body>
+    <h1>Agregar Nuevo Estudiante</h1>
+    <form id="formularioEstudiante">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" required><p>
+    <label for="edad">Edad</label>
+    <input type="number" id="edad" required><p>
+    <label for="curso">Curso</label>
+    <input type="text" id="curso" required><p>
+    <button type="submit">Agregar Estudiante</button>
+
+    <h2> Lista De Estudiantes</h2>
+    <ul id="listaEstudiantes"></ul>
+</form>
+
+    <script>
+        // crear array vacio para almacenar estudiante
+        let estudiantes = [];
+
+        // Obtener el formulario y la lista
+        let formulario = document.getElementById("formularioEstudiante");
+        let listaEstudiantes = document.getElementById("listaEstudiantes");
+    
+        function AgregarEstudiante(nombre, edad, curso){
+            estudiantes.push({nombre: nombre, edad: edad, curso: curso});
+
+
+        // crear un nuevo elemento li y agregarlo a la lista 
+        let li = document.createElement("li");
+        li.textContent = `Nombre: ${nombre}, Edad: ${edad}, Curso: ${curso}`;
+        listaEstudiantes.appendChild(li);
+        }
+
+        // Escuchar el evento submit del formulario 
+        formulario.addEventListener("submit", function(event){
+            event.preventDefault(); // Editar el envio del formulario
+
+
+        // Obtener los valores del formulario
+        let nombre = document.getElementById("nombre").value;
+        let edad = document.getElementById("edad").value;
+        let curso = document.getElementById("curso").value;
+
+        // Agregar el estudiante al array y mostrarlo
+        AgregarEstudiante(nombre, edad, curso);
+
+        //limpiar el formulario
+        formulario.reset();
+        })
+
+    </script>
+</body>
+</html>

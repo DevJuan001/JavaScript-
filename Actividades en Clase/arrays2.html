@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays 2 </title>
+</head>
+<body>
+    <h1>Lista de Estudiantes</h1>
+    <table id="tablaEstudiantes" border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Curso</th>
+            </tr>
+        </thead>
+    <tbody>
+    </tbody>
+    </table>
+    
+    <script>
+        // Crear el array para almacenar los datos
+        let estudiantes = [];
+        
+        // Funcion para agregar un dato al array
+        function agregarEstudiante(nombre, edad, curso){
+            estudiantes.push({nombre: nombre, edad: edad, curso: curso});
+        }
+
+        // Agregar algunos estudiantes
+        agregarEstudiante("Calvo", 80, "programacion");
+        agregarEstudiante("Mao", 80, "Matematicas" );
+        agregarEstudiante("Larouse", 25, "Desarrollo");
+
+        // Obtener el elemento de tbody de la tabla
+
+        let tbody = document.querySelector("#tablaEstudiantes tbody"); // "#" sirve para que imprima una sola vez
+
+        // Recorrer el array de estudiantes 
+        estudiantes.forEach(function(estudiante){
+            let fila = document.createElement("tr"); // "innerHtml" sirve para ejecutar etiquetas de html en js
+            fila.innerHTML=`                                          
+            <td>${estudiante.nombre}</td>
+            <td>${estudiante.curso}</td>    
+            <td>${estudiante.edad}</td>
+            `;
+            tbody.appendChild(fila);                 // 
+        });
+
+    </script>
+</body>
+</html>
