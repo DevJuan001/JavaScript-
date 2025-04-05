@@ -6,15 +6,14 @@
     <title>Evaluacion</title>
 </head>
 <body>
-    </div>
-        <div id="iniciarSesion">
-            <h2>Iniciar Sesión</h2>
+    <div id="iniciarSesion" style="display: none;">
+            <h1>Iniciar Sesión</h1>
             <input type="text" id="usuarioIngresado" placeholder="Ingrese su usuario">
             <br>
             <input type="password" id="contrasenaIngresada" placeholder="Ingrese su contraseña">
             <br>
             <button onclick="VerificarLogin()">Iniciar Sesión</button>
-        </div>
+    </div>
     <div id="juego" style="display: none;">
         <h2>Adivina el número</h2>
         <p>Adivina un número entre 1 y 100</p>
@@ -22,6 +21,21 @@
         <button onclick="adivinarNumero()">Adivinar</button>
         <p id="resultadoJuego"></p>
         <p id="intentosRestantes"></p>
+    </div>
+    <div id="registro" style="display: none;">
+        <h1>Agregar Nuevo Estudiante</h1>
+        <form id="formularioEstudiante">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" required><p>
+            <label for="edad">Edad</label>
+            <input type="number" id="edad" required><p>
+            <label for="curso">Curso</label>
+            <input type="text" id="curso" required><p>
+            <button type="submit">Agregar Estudiante</button>
+        
+            <h2> Lista De Estudiantes</h2>
+            <ul id="listaEstudiantes"></ul>
+        </form>
     </div>
 </body>
 <script src="test.js"></script>

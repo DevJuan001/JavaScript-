@@ -28,7 +28,9 @@
         let intentos2 = 3;
 
         function VerificarLogin() {
-
+        
+            document.getElementById("iniciarSesion").style.display = "block";
+        
         const usuarioIngresado = document.getElementById("usuarioIngresado").value;
         const contrasenaIngresada = document.getElementById("contrasenaIngresada").value;
 
@@ -56,51 +58,39 @@
         }
     }else {
         opciones();
+        document.getElementById("iniciarSesion").style.display = "none";
     }
 }
     
     function opciones() {
     let opcion = prompt("Elija una opción: -Sopa de letras -Lista de animales -Juego -Registro de notas -Cambio de texto -Cambiar texto de color  -lista de campos  -Galería -Cambiar texto con fondo de color -Calculadora -Par o impar").toLowerCase();
 
-    switch (opcion) {
-        case "sopa":
-            Sopadeletras();
-            break;
-        case "lista":
-            Listadeanimales();
-            break;
-        case "juego":
+    if (opcion = "sopa") {
+        Sopadeletras();
+    }else if (opcion = "juego") {
             Juego();
-            break;
-        case "notas":
-            RegistroNotas();
-            break;
-        case "cambiotexto":
-            CambiarTexto();
-            break;
-        case "colortexto":
-            CambiarcolorTexto();
-            break;
-        case "listacampos":
-            ListaCampos();
-            break;
-        case "galeria":
-            Galeria();
-            break;
-        case "textofondocolor":
-            CambiartextoconFondo();
-            break;
-        case "calculadora":
-            Calculadora();
-            break;
-        case "par":
-            parImpar();
-            break;
-        default:
-            alert("Opción no válida");
-            break;
-        }
+    }else if (opcion = "lista") {
+        Listadeanimales();
+    }else if (opcion = "notas") {
+        RegistroNotas();
+    }else if (opcion = "lista") {
+        CambiarTexto();
+    }else if (opcion = "lista") {
+        CambiarcolorTexto();
+    }else if (opcion = "lista") {
+        ListaCampos();
+    }else if (opcion = "lista") {
+        Galeria();
+    }else if (opcion = "lista") {
+        CambiartextoconFondo();
+    }else if (opcion = "lista") {
+        Calculadora();
+    }else if (opcion = "lista") {
+        parImpar();
+    }else{
+        alert("Opcion no valida");
     }
+}
 
 
     function Sopadeletras(){
@@ -147,27 +137,61 @@
 
         
     }
-    function RegistroNotas(){
+    
+    let estudiantes = [];
 
-    }
+    function RegistroNotas(){
+        document.getElementById("registro").style.display = "block";
+        let formulario = document.getElementById("formularioEstudiante");
+        let listaEstudiantes = document.getElementById("listaEstudiantes");
+        estudiantes.push({nombre: nombre, edad: edad, curso: curso});
+
+
+        // crear un nuevo elemento li y agregarlo a la lista 
+        let li = document.createElement("li");
+        li.textContent = `Nombre: ${nombre}, Edad: ${edad}, Curso: ${curso}`;
+        listaEstudiantes.appendChild(li);
+        }
+
+        // Escuchar el evento submit del formulario 
+        formulario.addEventListener("submit", function(event){
+            event.preventDefault(); // Editar el envio del formulario
+
+
+        // Obtener los valores del formulario
+        let nombre = document.getElementById("nombre").value;
+        let edad = document.getElementById("edad").value;
+        let curso = document.getElementById("curso").value;
+
+        // Agregar el estudiante al array y mostrarlo
+        AgregarEstudiante(nombre, edad, curso);
+
+        //limpiar el formulario
+        formulario.reset();
+        })
 
     function CambiarTexto(){
+
 
     }
 
     function CambiarcolorTexto(){
 
+
     }
 
     function ListaCampos(){
+
 
     }
 
     function Galeria(){
 
+
     }
 
     function CambiartextoconFondo(){
+
 
     }
 
@@ -228,6 +252,7 @@
     }
 
     function parImpar(){
+
 
     }
     
