@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluacion</title>
+</head>
+<body>
+    </div>
+        <div id="iniciarSesion">
+            <h2>Iniciar Sesión</h2>
+            <input type="text" id="usuarioIngresado" placeholder="Ingrese su usuario">
+            <br>
+            <input type="password" id="contrasenaIngresada" placeholder="Ingrese su contraseña">
+            <br>
+            <button onclick="VerificarLogin()">Iniciar Sesión</button>
+        </div>
+    <div id="juego" style="display: none;">
+        <h2>Adivina el número</h2>
+        <p>Adivina un número entre 1 y 100</p>
+        <input type="number" id="numeroAdivinado" placeholder="Ingresa un número">
+        <button onclick="adivinarNumero()">Adivinar</button>
+        <p id="resultadoJuego"></p>
+        <p id="intentosRestantes"></p>
+    </div>
+</body>
+<script src="test.js"></script>
+</html>
