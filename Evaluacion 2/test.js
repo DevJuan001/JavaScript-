@@ -29,8 +29,6 @@
 
         function VerificarLogin() {
         
-            document.getElementById("iniciarSesion").style.display = "block";
-        
         const usuarioIngresado = document.getElementById("usuarioIngresado").value;
         const contrasenaIngresada = document.getElementById("contrasenaIngresada").value;
 
@@ -42,7 +40,7 @@
         if (intentos1 > 0) {
           alert(`Usuario incorrecto. Intentos restantes: ${intentos1}`);
         } else {
-          alert("Has excedido los intentos de usuario. Acceso denegado.");
+          alert("Intentos de usuario completados. Gracias por intentar.");
           document.getElementById("iniciarSesion").style.display = "none";
         }
         return;
@@ -57,56 +55,82 @@
           document.getElementById("iniciarSesion").style.display = "none";
         }
     }else {
-        opciones();
         document.getElementById("iniciarSesion").style.display = "none";
+        opciones();
+       
     }
 }
     
     function opciones() {
-    let opcion = prompt("Elija una opción: -Sopa de letras -Lista de animales -Juego -Registro de notas -Cambio de texto -Cambiar texto de color  -lista de campos  -Galería -Cambiar texto con fondo de color -Calculadora -Par o impar").toLowerCase();
+    let opcion = prompt("Elija una opción: -Sopa de letras (sopa) -Lista de animales (lista) -Juego (juego) -Registro de notas (notas) -Cambio de texto (cambio) -Cambiar texto de color (color) -lista de campos (campos) -Galería (galeria) -Cambiar texto con fondo de color (textofondo) -Calculadora (calculadora) -Par o impar (par) ")
 
-    if (opcion = "sopa") {
+    if (opcion == "sopa") {
         Sopadeletras();
-    }else if (opcion = "juego") {
-            Juego();
-    }else if (opcion = "lista") {
+    }else if (opcion == "juego") {
+        Juego();
+    }else if (opcion == "lista") {
         Listadeanimales();
-    }else if (opcion = "notas") {
+    }else if (opcion == "notas") {
         RegistroNotas();
-    }else if (opcion = "lista") {
+    }else if (opcion == "cambio") {
         CambiarTexto();
-    }else if (opcion = "lista") {
+    }else if (opcion == "color") {
         CambiarcolorTexto();
-    }else if (opcion = "lista") {
+    }else if (opcion == "campos") {
         ListaCampos();
-    }else if (opcion = "lista") {
+    }else if (opcion == "galeria") {
         Galeria();
-    }else if (opcion = "lista") {
+    }else if (opcion == "textofondo") {
         CambiartextoconFondo();
-    }else if (opcion = "lista") {
+    }else if (opcion == "calculadora") {
         Calculadora();
-    }else if (opcion = "lista") {
+    }else if (opcion == "par") {
         parImpar();
     }else{
         alert("Opcion no valida");
+        return;
     }
 }
 
 
     function Sopadeletras(){
 
+        
+
     }
 
     function Listadeanimales(){
 
-    }
+        
+        let animales = ["Gato", "Perro", "Tigre", "Leon", "Elefante"];
+        
+        document.getElementById("listaAnimal").style.display = "block";
+        
+        //Obtener el elemento ul donde se insertan los animales
+        let listaAnimales = document.getElementById("listaAnimales");
 
-    function Juego(){
+
+        // Recorrer el array y crear el elemento li para cada animal
+        animales.forEach(function(animal){
+        let li = document.createElement("li");
+        li.textContent = animal;
+        listaAnimales.appendChild(li);
+
+    })
+}
+
         let numeroAleatorio;
         let intentos3 = 10;
 
-        function iniciarJuego() {
+        function Juego() {
             document.getElementById("juego").style.display = "block";
+
+            const botonAdivinarNumero = document.querySelector("#juego button")
+            botonAdivinarNumero.addEventListener("click", function() {
+            alert("Boton clickeado");
+            adivinarNumero();
+            });
+
             numeroAleatorio = Math.floor(Math.random() * 100) + 1; 
             intentosJuego = 10; 
             document.getElementById("resultadoJuego").textContent = "";
@@ -114,6 +138,7 @@
         }
 
         function adivinarNumero() {
+
             let numeroAdivinado = parseInt(document.getElementById("numeroAdivinado").value);
             intentos3--;
 
@@ -135,63 +160,122 @@
             document.getElementById("numeroAdivinado").value = "";
         }
 
-        
-    }
-    
-    let estudiantes = [];
+    function RegistroNotas (){
 
-    function RegistroNotas(){
+        let notas = [];
+
         document.getElementById("registro").style.display = "block";
-        let formulario = document.getElementById("formularioEstudiante");
-        let listaEstudiantes = document.getElementById("listaEstudiantes");
-        estudiantes.push({nombre: nombre, edad: edad, curso: curso});
+        document.getElementById("formulario").style.display = "block";
 
-
-        // crear un nuevo elemento li y agregarlo a la lista 
-        let li = document.createElement("li");
-        li.textContent = `Nombre: ${nombre}, Edad: ${edad}, Curso: ${curso}`;
-        listaEstudiantes.appendChild(li);
-        }
+        const formulario = document.getElementById("formulario");
 
         // Escuchar el evento submit del formulario 
         formulario.addEventListener("submit", function(event){
-            event.preventDefault(); // Editar el envio del formulario
+            alert("Boton clickeado");
+            event.preventDefault(); // Evitar el envio del formulario
 
 
         // Obtener los valores del formulario
-        let nombre = document.getElementById("nombre").value;
-        let edad = document.getElementById("edad").value;
-        let curso = document.getElementById("curso").value;
+        const materia = document.getElementById("materia").value;
+        const nota1 = parseFloat(document.getElementById("nota1").value);
+        const nota2 = parseFloat(document.getElementById("nota2").value);
+        const nota3 = parseFloat(document.getElementById("nota3").value);
 
-        // Agregar el estudiante al array y mostrarlo
-        AgregarEstudiante(nombre, edad, curso);
+        notas.push({materia, nota1, nota2, nota3});
 
+        // Sirve para crear una fila para la tabla
+        const tabla = document.getElementById("tablaNotas").querySelector("tbody");
+        const nuevaFila = document.createElement("tr");
+
+        nuevaFila.innerHTML = `
+        <td>${materia}</td>
+        <td>${nota1}</td>
+        <td>${nota2}</td>
+        <td>${nota3}</td>`;
+
+        //Sirve para agregar la fila a la tabla
+        tabla.appendChild(nuevaFila);
+        
         //limpiar el formulario
         formulario.reset();
-        })
+        });
+    }
 
     function CambiarTexto(){
+        
+        document.getElementById("cambiotexto").style.display = "block";
 
-
+        const botonCambiarTexto = document.querySelector("#cambiotexto button");
+        botonCambiarTexto.addEventListener("click", function() {
+            alert("Boton clickeado");
+            document.getElementById("Texto1").innerText="Texto Cambiado adso mixto";
+            document.getElementById("Texto2").innerText="Texto Cambiado adso mixto";
+        });
     }
 
     function CambiarcolorTexto(){
 
+        document.getElementById("cambiocolor").style.display = "block";
 
+        const botonCambiarColor = document.querySelector("#cambiocolor button");
+        botonCambiarColor.addEventListener("click", function() {
+            alert("Boton clickeado");
+        document.querySelector(".texto1").style.color = "yellow";
+        document.querySelector(".texto3").style.color = "blue";
+
+        });
     }
+
 
     function ListaCampos(){
 
+        document.getElementById("listadecampos").style.display = "block";
 
+        const botonAgregarCampo = document.querySelector("#listadecampos button");
+
+        let i = 1; // Contador para los elementos de la lista
+
+        botonAgregarCampo.addEventListener("click", function() {
+            alert("Boton clickeado");
+            const nuevoElemento = document.createElement("li");
+            i++;
+            nuevoElemento.textContent =  i+" Elemento";
+            document.getElementById("listaCampos").appendChild(nuevoElemento);
+        });
     }
 
     function Galeria(){
 
+        document.getElementById("galeria").style.display = "block";
+        // Array de imágenes
+        const imagenes = ["img/img1.jpeg", "img/img2.jpeg", "img/img3.jpg ", "img/img4.jpg"];
+        
+        const botongaleria = document.querySelector("#galeria button");
 
+        let contador = 1; // Contador para llevar el seguimiento de la imagen actual
+        botongaleria.addEventListener("click", function() {
+            alert("Boton clickeado");
+            document.getElementById("Mimagen").setAttribute("src", imagenes[contador]);
+            contador = (contador + 1) % imagenes.length;
+        });
     }
 
     function CambiartextoconFondo(){
 
+        document.getElementById("cambiarTextoyFondo").style.display = "block";
+
+        const botonCambiarTextoyFondo = document.querySelector("#cambiarTextoyFondo button");
+        botonCambiarTextoyFondo.addEventListener("click", function (){
+            alert("Boton clickeado");
+
+            // cambiar el texto
+            document.getElementById("texto1").innerText="Texto Cambiado adso mixto";
+            document.getElementById("texto2").innerText="Texto Cambiado adso mixto";
+
+            // cambiar el color de fondo
+            document.getElementById("texto1").classList.add("resaltado")
+            document.getElementById("texto2").classList.add("resaltado")
+        })
 
     }
 
@@ -252,6 +336,21 @@
     }
 
     function parImpar(){
+
+            document.getElementById("par").style.display = "block";
+
+            const Botonpar = document.querySelector("#par button");
+
+            Botonpar.addEventListener("click", function() {
+                alert("Boton clickeado");
+
+                let numero = parseInt(document.getElementById("numero").value);
+                if (numero % 2 === 0) {
+                    alert(`${numero} es par`);
+                } else {
+                    alert(`${numero} es impar`);
+                }
+            });
 
 
     }

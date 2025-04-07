@@ -6,7 +6,7 @@
     <title>Evaluacion</title>
 </head>
 <body>
-    <div id="iniciarSesion" style="display: none;">
+    <div id="iniciarSesion" style="display: block;">
             <h1>Iniciar Sesión</h1>
             <input type="text" id="usuarioIngresado" placeholder="Ingrese su usuario">
             <br>
@@ -14,29 +14,99 @@
             <br>
             <button onclick="VerificarLogin()">Iniciar Sesión</button>
     </div>
+
+    <div id="listaAnimal" style="display: none;">
+        <h1>Lista de animales</h1>
+        <ul id="listaAnimales"></ul>
+    </div>
+
     <div id="juego" style="display: none;">
         <h2>Adivina el número</h2>
         <p>Adivina un número entre 1 y 100</p>
         <input type="number" id="numeroAdivinado" placeholder="Ingresa un número">
-        <button onclick="adivinarNumero()">Adivinar</button>
+        <button>Adivinar</button>
         <p id="resultadoJuego"></p>
         <p id="intentosRestantes"></p>
     </div>
-    <div id="registro" style="display: none;">
-        <h1>Agregar Nuevo Estudiante</h1>
-        <form id="formularioEstudiante">
-            <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" required><p>
-            <label for="edad">Edad</label>
-            <input type="number" id="edad" required><p>
-            <label for="curso">Curso</label>
-            <input type="text" id="curso" required><p>
-            <button type="submit">Agregar Estudiante</button>
-        
-            <h2> Lista De Estudiantes</h2>
-            <ul id="listaEstudiantes"></ul>
+
+    <div id="registro"style="display: none;">
+        <h1>Agregar Notas</h1 >
+        <form id="formulario">
+            <label for="materia">Materia</label>
+            <input type="text" id="materia" required><p>
+            <label for="nota1">Nota 1</label>
+            <input type="number" id="nota1" required><p>
+            <label for="nota2">Nota 2</label>
+            <input type="number" id="nota2" required><p>
+            <label for="nota3">Nota 3</label>
+            <input type="number" id="nota3" required><p>
+            <button type="submit">Agregar Notas</button>
         </form>
+        
+            <h2> Lista De Notas</h2>
+            <table border="1" id="tablaNotas">
+                <thead>
+                    <tr>
+                        <th>Materia</th>
+                        <th>Nota 1</th>
+                        <th>Nota 2</th>
+                        <th>Nota 3</th>
+                    </tr>
+                </thead>
+                <tbody >
+
+                </tbody>
+            </table>
+
     </div>
+
+    <div id="cambiotexto" style="display: none;">
+        <h1 id="Texto1">Hola Adso</h1>
+        <h1 id="Texto2">Hola Adso</h1>
+        <button>Cambiar textos</button>
+    </div>
+
+    <div id="cambiocolor" style="display: none;">
+        <h1 class="texto1"> Texto 1</h1>
+        <h1 class="texto2"> Texto 2</h1>
+        <h1 class="texto3"> Texto 3</h1>
+        <button>Cambiar color</button>
+    </div>
+
+    <div id="listadecampos" style="display: none;">
+        <h1>Lista de Campos</h1>
+        <ul id="listaCampos">
+            <li>1 Elemento</li>
+        </ul>
+        <button> Agregar Elemento</button>
+
+    </div>
+
+    <div id="galeria" style="display: none;">
+        <h1>Galeria</h1>
+        <img id="Mimagen" src="img/img1.jpeg"><br>
+        <button>Cambiar Imagen</button>
+    </div>
+
+    <div id="cambiarTextoyFondo" style="display: none;">
+        <style>
+            .resaltado{
+                background-color: yellow;
+            }
+        </style>
+        <h1>Cambio de Texto y Color</h1>
+        <h1 id="texto1">Texto Ejemplo</h1>
+        <h1 id="texto2">Texto Ejemplo</h1>
+        <button>Cambiar Texto y Fondo</button>
+    </div>
+
+    <div id="par" style="display: none;">
+        <h1>Numero Par o Impar</h1>
+        <label for="numero">Ingrese el Numero</label><br>
+        <input type="number" id="numero" placeholder="Ingrese un numero"><br>
+        <button>Par o Impar</button>
+    </div>
+
 </body>
 <script src="test.js"></script>
 </html>
