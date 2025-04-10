@@ -15,6 +15,28 @@
             <button onclick="VerificarLogin()">Iniciar Sesión</button>
     </div>
 
+    <div id="botones" style="display: none;">
+        <button onclick="Sopadeletras()">Sopa</button>
+        <button onclick="Listadeanimales()">Lista de Animales</button>
+        <button onclick="Juego()">Juego</button>
+        <button onclick="RegistroNotas()">Notas</button>
+        <button onclick="CambiarTexto()">Cambiar Texto</button>
+        <button onclick="CambiarcolorTexto()">Cambiar Color Texto</button>
+        <button onclick="ListaCampos()">Lista Campos</button>
+        <button onclick="Galeria()">Galeria</button>
+        <button onclick="CambiartextoconFondo()">Cambiar Texto Y Fondo</button>
+        <button onclick="Calculadora()">Calculadora</button>
+        <button onclick="parImpar()">Par o Impar</button>
+    </div>
+
+    <div id="sopa" style="display: none;">
+        <h1>Sopa de Letras</h1>
+        <h2>Palabras</h2>
+        <p id="palabras"></p>
+        <button> Ver Sopa de Letras</button>
+        <table id="tablaSopa" border="1" ></table>
+    </div>
+
     <div id="listaAnimal" style="display: none;">
         <h1>Lista de animales</h1>
         <ul id="listaAnimales"></ul>
@@ -100,11 +122,16 @@
         <button>Cambiar Texto y Fondo</button>
     </div>
 
+    <div id ="calculadora" style="display: none;">
+        <p id="resultadoCalculadora"></p>
+    </div>
+
     <div id="par" style="display: none;">
-        <h1>Numero Par o Impar</h1>
+        <h1>Par o Impar</h1>
         <label for="numero">Ingrese el Numero</label><br>
         <input type="number" id="numero" placeholder="Ingrese un numero"><br>
         <button>Par o Impar</button>
+        <p id="resultadopar"></p>
     </div>
 
 </body>
