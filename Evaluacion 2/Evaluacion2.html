@@ -15,9 +15,32 @@
             <button onclick="VerificarLogin()">Iniciar Sesión</button>
     </div>
 
+    <div id="botones" style="display: none;">
+        <button onclick="Sopadeletras()">Sopa</button>
+        <button onclick="Listadeanimales()">Lista de Animales</button>
+        <button onclick="Juego()">Juego</button>
+        <button onclick="RegistroNotas()">Notas</button>
+        <button onclick="CambiarTexto()">Cambiar Texto</button>
+        <button onclick="CambiarcolorTexto()">Cambiar Color Texto</button>
+        <button onclick="ListaCampos()">Lista Campos</button>
+        <button onclick="Galeria()">Galeria</button>
+        <button onclick="CambiartextoconFondo()">Cambiar Texto Y Fondo</button>
+        <button onclick="Calculadora()">Calculadora</button>
+        <button onclick="parImpar()">Par o Impar</button>
+    </div>
+
     <div id="sopa" style="display: none;">
         <h1>Sopa de Letras</h1>
         <h2>Palabras</h2>
+        <p id="palabras"></p>
+        <button> Ver Sopa de Letras</button>
+        <table>
+            <tr id="fila1"></tr>
+            <tr id="fila2"></tr>
+            <tr id="fila3"></tr>
+            <tr id="fila4"></tr>
+            <tr id="fila5"></tr>
+        </table>
     </div>
 
     <div id="listaAnimal" style="display: none;">
@@ -104,6 +127,21 @@
         <h1 id="texto2">Texto Ejemplo</h1>
         <button>Cambiar Texto y Fondo</button>
     </div>
+
+    <div id="calculadora" style="display: none;">
+        <h1>Calculadora</h1>
+        <input type="number" id="num1" placeholder="Número 1">
+        <input type="number" id="num2" placeholder="Número 2">
+        <br>
+        <button id="suma">Suma</button>
+        <button id="suma">Resta</button>
+        <button id="suma">Multiplicación</button>
+        <button id="suma">División</button>
+        <button id="suma">Tabla</button>
+        <br>
+        <p id="resultadoCalculadora"></p>
+    </div>
+
 
     <div id="par" style="display: none;">
         <h1>Numero Par o Impar</h1>

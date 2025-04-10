@@ -18,8 +18,33 @@
     16.	Todo debe estar por funciones 
     */
 
+
+    function botones() {
+        // Ocultar todos los elementos secundarios
+        const secciones = [
+            "botones",
+            "sopa",
+            "listaAnimal",
+            "juego",
+            "registro",
+            "cambiotexto",
+            "cambiocolor",
+            "listadecampos",
+            "galeria",
+            "cambiarTextoyFondo",
+            "par"
+        ];
+    
+        secciones.forEach(id => {
+            document.getElementById(id).style.display = "none";
+        });
+    
+        // Mostrar el contenedor de botones
+        document.getElementById("botones").style.display = "block";
+    }
+
     let usuarios = [
-        {"usuario": "sena1", "contra": "123"},
+        {"usuario": "sena", "contra": "123"},
         {"usuario": "sena2", "contra": "1234"},
         {"usuario": "sena3", "contra": "12345"}
         ]
@@ -56,52 +81,53 @@
         }
     }else {
         document.getElementById("iniciarSesion").style.display = "none";
-        opciones();
-       
-    }
+        alert("Boton Clickeado");
+        botones();
 }
-    
-    function opciones() {
-    let opcion = prompt("Elija una opción: -Sopa de letras (sopa) -Lista de animales (lista) -Juego (juego) -Registro de notas (notas) -Cambio de texto (cambio) -Cambiar texto de color (color) -lista de campos (campos) -Galería (galeria) -Cambiar texto con fondo de color (textofondo) -Calculadora (calculadora) -Par o impar (par) ")
+        }
 
-    if (opcion == "sopa") {
-        Sopadeletras();
-    }else if (opcion == "juego") {
-        Juego();
-    }else if (opcion == "lista") {
-        Listadeanimales();
-    }else if (opcion == "notas") {
-        RegistroNotas();
-    }else if (opcion == "cambio") {
-        CambiarTexto();
-    }else if (opcion == "color") {
-        CambiarcolorTexto();
-    }else if (opcion == "campos") {
-        ListaCampos();
-    }else if (opcion == "galeria") {
-        Galeria();
-    }else if (opcion == "textofondo") {
-        CambiartextoconFondo();
-    }else if (opcion == "calculadora") {
-        Calculadora();
-    }else if (opcion == "par") {
-        parImpar();
-    }else{
-        alert("Opcion no valida");
-        return;
-    }
-}
 
 
     function Sopadeletras(){
 
-        
+        botones();
 
+        document.getElementById("sopa").style.display = "block";
+
+        // Palabras a buscar ("Gato", "Perro", "Tigre")
+        var Sopa = [
+            ["G", "A", "T", "O", "E", "L", "P"],
+            ["P", "E", "R", "R", "O", "N", "O"],
+            ["T", "I", "G", "R", "E", "S", "I"],
+            ["L", "E", "O", "X", "A", "S", "I"],
+            ["E", "L", "E", "F", "A", "N", "U"],
+            ["U", "Ñ", "P", "N", "W", "Q", "Y"]
+            ["Y", "T", "Z", "X", "A", "E", "T"]
+        ];
+
+        document.getElementById("palabras").innerHTML =
+        Sopa[0][0] + Sopa[0][1] + Sopa[0][2] + Sopa[0][3]+ ","+ 
+        Sopa[1][0] + Sopa[1][1] + Sopa[1][2] + Sopa[1][3] + Sopa[1][4] + ","+ 
+        Sopa[2][0] + Sopa[2][1] + Sopa[2][2] + Sopa[2][3] + Sopa[2][4] 
+
+        const botonSopa = document.querySelector("#sopa button");
+        botonSopa.addEventListener("click", function() {
+        for (var i = 0; i < Sopa.length; i++) {
+            const fila = document.createElement("tr");
+            for (var j = 0; j < Sopa[i].length; j++) {
+                const celda = document.createElement("td");
+                document.write(Sopa[i][j] + " ");
+            }
+            document.write("<br>");
+        }
+        });
     }
+        
 
     function Listadeanimales(){
 
-        
+        botones();
+
         let animales = ["Gato", "Perro", "Tigre", "Leon", "Elefante"];
         
         document.getElementById("listaAnimal").style.display = "block";
@@ -123,6 +149,9 @@
         let intentos3 = 10;
 
         function Juego() {
+
+            botones();
+        
             document.getElementById("juego").style.display = "block";
 
             const botonAdivinarNumero = document.querySelector("#juego button")
@@ -138,6 +167,8 @@
         }
 
         function adivinarNumero() {
+            botones();
+        
 
             let numeroAdivinado = parseInt(document.getElementById("numeroAdivinado").value);
             intentos3--;
@@ -161,6 +192,9 @@
         }
 
     function RegistroNotas (){
+
+        botones();
+        
 
         let notas = [];
 
@@ -202,6 +236,8 @@
     }
 
     function CambiarTexto(){
+
+        botones();
         
         document.getElementById("cambiotexto").style.display = "block";
 
@@ -218,6 +254,7 @@
         document.getElementById("cambiocolor").style.display = "block";
 
         const botonCambiarColor = document.querySelector("#cambiocolor button");
+        
         botonCambiarColor.addEventListener("click", function() {
             alert("Boton clickeado");
         document.querySelector(".texto1").style.color = "yellow";
@@ -228,6 +265,8 @@
 
 
     function ListaCampos(){
+
+        botones();
 
         document.getElementById("listadecampos").style.display = "block";
 
@@ -246,6 +285,9 @@
 
     function Galeria(){
 
+        botones();
+
+
         document.getElementById("galeria").style.display = "block";
         // Array de imágenes
         const imagenes = ["img/img1.jpeg", "img/img2.jpeg", "img/img3.jpg ", "img/img4.jpg"];
@@ -261,6 +303,8 @@
     }
 
     function CambiartextoconFondo(){
+
+        botones();
 
         document.getElementById("cambiarTextoyFondo").style.display = "block";
 
@@ -281,7 +325,10 @@
 
     function Calculadora(){
 
+        botones();
+
         Operacion=prompt("Introduzca la Operacion a realizar : -suma, -resta, -muliplicacion, -division -tabla");
+
             var Operacion;
 
             if (Operacion=="suma"){
@@ -290,7 +337,7 @@
                 num1=prompt("Introduce el primer numero");
                 num2=prompt("Introduce el segundo numero"); 
                 var suma= parseInt(num1)+parseInt(num2);
-                alert("El resultado de la suma de "+num1+" y "+num2+" es "+suma);
+                document.write("<p></p>El resultado de la suma de "+num1+" y "+num2+" es "+suma+"</p>");
                 
             }
             else if (Operacion=="resta"){
@@ -299,7 +346,7 @@
                 num1=prompt("Introduce el primer numero");
                 num2=prompt("Introduce el segundo numero"); 
                 var resta=num1-num2;
-                alert("El resultado de la resta de "+num1+" y "+num2+" es "+resta);
+                document.write("El resultado de la resta de "+num1+" y "+num2+" es "+resta);
 
             }
             else if (Operacion=="multiplicacion"){
@@ -309,14 +356,14 @@
                 num1=prompt("Introduce el primer numero");
                 num2=prompt("Introduce el segundo numero"); 
                 var multiplicacion=num1*num2;
-                alert("El resultado de la multiplicacion de "+num1+" y "+num2+" es "+multiplicacion);
+                document.write("El resultado de la multiplicacion de "+num1+" y "+num2+" es "+multiplicacion);
 
             }
             else if (Operacion=="division"){
                 num1=prompt("Introduce el primer numero");
                 num2=prompt("Introduce el segundo numero"); 
                 var division=num1/num2;
-                alert("El resultado de la division de "+num1+" y "+num2+" es "+division);
+                document.write("El resultado de la division de "+num1+" y "+num2+" es "+division);
 
             }else if (Operacion=="tabla"){
                 
@@ -330,12 +377,14 @@
                     }
                     }   
             }else{
-                alert("Operacion no valida");
+                document.write("Operacion no valida");
             }
 
     }
 
     function parImpar(){
+
+        botones();
 
             document.getElementById("par").style.display = "block";
 
