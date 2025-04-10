@@ -124,6 +124,7 @@
                 fila.appendChild(celda);
             }
             tabla.appendChild(fila);
+            document.write(Sopa[i][j] + " ");
         }
         });
     }
