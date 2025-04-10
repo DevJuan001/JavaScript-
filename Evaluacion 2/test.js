@@ -113,7 +113,7 @@
         botonSopa.addEventListener("click", function() {
         alert("Boton clickeado");
 
-        const tabla = document.querySelector("#sopa table");
+        const tabla = document.getElementById("tablaSopa");
 
         // Sirve para crear las filas y columnas de la sopa de letras
         for (var i = 0; i < Sopa.length; i++) {
@@ -124,7 +124,6 @@
                 fila.appendChild(celda);
             }
             tabla.appendChild(fila);
-            document.write(Sopa[i][j] + " ");
         }
         });
     }
