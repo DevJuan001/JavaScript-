@@ -5,7 +5,7 @@
 </h1>
 
 <p align="center">
-<strong>Includes assessments, in class exercises, and your own practice exercises</strong>
+<strong>Includes assessments and in class exercises</strong>
 </p>
 
 
