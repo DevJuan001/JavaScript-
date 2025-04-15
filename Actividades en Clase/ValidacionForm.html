@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validacion de Formulario con JavaScript</title>
+</head>
+<body>
+    <h2>Atributos de Validacion del Formulario Html</h2>
+    <form>
+        <h3>1. required</h3>
+        <p>Este sirve para especificar que un campo debe completarse antes de que se pueda enviar el formulario</p>
+        <input type="text" id="nombre" placeholder="Nombre" required><br>
+        <h3>2. minlength & maxlength</h3>
+        <p>Este sirve para especificar la longitud minima y maima de los datos de texto</p>
+        <input type="text" id="apellido" placeholder="Apellido" minlength="3" maxlength="10" required><br>
+        <h3>3. min y max</h3>
+        <p>Este sirve para especificar los valores minimo y maximo de los tipos de entrada numerico</p>
+        <input type="number" id="edad" placeholder="Edad" min="18" max="99" required><br>
+        <h3>4. pattern</h3>
+        <p>Este sirve para definir un patron que deben seguir los datos introducidos</p>
+        <input type="text" id="correo" placeholder="Correo Electronico" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required><br>
+        </form>
+
+    <script>
+    </script>
+</body>
+</html>
